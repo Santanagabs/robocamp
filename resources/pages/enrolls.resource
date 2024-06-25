@@ -3,7 +3,7 @@ Documentation        keywords que representam a página de cadastro de matrícul
 
 Library        Browser
 Library        libs/DateTricks.py
-Library    String
+Library        String
 
 
 *** Keywords ***
@@ -34,6 +34,11 @@ Fill Start Date
 
     ${start_date}    Get Start Date
     
-    FOR    ${number}    IN    ${start_date}
-        Keyboard Key    press    ${number}
+    FOR    ${number}    IN        @{start_date}
+        Keyboard Key    press     ${number}
     END
+
+Submit Enroll Form
+    Click    css=button >> text=Salvar
+
+  
