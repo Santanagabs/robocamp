@@ -20,7 +20,7 @@ Select Student Where Email
     
     ${result}           Query                ${query}
 
-    [return]            ${result}[0]
+    RETURN            ${result}[0]
 
 Delete Enroll By Email
     [Arguments]        ${email}
@@ -32,9 +32,20 @@ Delete Enroll By Email
     
     Execute SQL String        ${query}
 
+
+Delete Student By email
+    [Arguments]               ${email}
+
+    ${query}            Set Variable 
+    ...                 DELETE FROM public.students WHERE email = '${email}';
+    
+    Execute Sql String    ${query}
+
+
 # Helpers
-Reset Student Enroll
+Reset Student 
     [Arguments]               ${email}
     Connect To Postgres
-    Delete Enroll By Email    ${email}     
+    Delete Student By email    ${email}     
     Disconnect From Database
+

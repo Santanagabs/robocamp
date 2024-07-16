@@ -6,6 +6,9 @@ Resource        components/toast.resource
 Resource        pages/login.resource
 Resource        pages/enrolls.resource
 
+Resource        services/sessions.resource
+Resource        services/students.resource
+ 
 Resource        database.resource
 
 Library         JSONLibrary
@@ -17,7 +20,7 @@ Do Login
     [Arguments]       ${user}
 
     Go To Login Page
-    Fill Credentials    ${user}[email]        ${user}[pass]
+    Fill Credentials    ${user}[email]        ${user}[password]
     Submit Credentials
     User Should Be Logged In        ${user}[name]
 
@@ -28,4 +31,4 @@ Get Fixture
     ...                  ${EXECDIR}/resources/fixtures/${fixture_file}.json
     ...                  encoding=UTF-8 
 
-    [Return]             ${fixture}
+    RETURN             ${fixture}
